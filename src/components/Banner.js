@@ -5,7 +5,7 @@ const SectionContainer = styled.section`
   position: relative;
   width: auto;
   height: 740px;
-  background: ${({ bgImage }) => `url(${bgImage}) no-repeat center/cover`};
+  background: ${({ $bgImage }) => `url(${$bgImage}) no-repeat center/cover`};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -90,7 +90,7 @@ const Form = styled.form`
   width : 500px;
   height : 50px;
   margin: 0 auto;
-  border : solid 1px ${({ isValid }) => (isValid === null ? "#fff" : isValid ? "#00C300" : "#ff6633")};
+  border : solid 1px ${({ $isValid }) => ($isValid === null ? "#fff" : $isValid ? "#00C300" : "#ff6633")};
   border-radius: 7px;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.1);
@@ -131,8 +131,8 @@ const ErrorMessage = styled.p`
   margin-top: 5px;
   padding-left: 12px;
   align-self: flex-start; 
-  visibility: ${({ isValid }) => (isValid === false ? "visible" : "hidden")};
-  opacity: ${({ isValid }) => (isValid === false ? "1" : "0")};
+  visibility: ${({ $isValid }) => ($isValid === false ? "visible" : "hidden")};
+  opacity: ${({ $isValid }) => ($isValid === false ? "1" : "0")};
   transition: opacity 0.3s ease-in-out;
 `;
 
@@ -174,7 +174,7 @@ export default function Banner() {
   };
 
   return (
-    <SectionContainer bgImage={bgImage}>
+    <SectionContainer $bgImage={bgImage}>
       <Overlay />
       <Content>
         <Title>Sed ut perspiciatis unde omnis</Title>
@@ -189,13 +189,13 @@ export default function Banner() {
           Subscribe to our newsletter
         </EmailTitle>
         <FormContainer>
-          <Form isValid={isValid}>
+          <Form $isValid={isValid}>
             <EmailInput type="email" placeholder="Enter your email" value={email} onChange={handleInputChange} />
             <SubmitButton>
               <img src="/img/email/paper-plane-1.png" alt="Send Email" />
             </SubmitButton>
           </Form>
-          <ErrorMessage isValid={isValid}>
+          <ErrorMessage $isValid={isValid}>
             Please enter a valid email!
           </ErrorMessage>
         </FormContainer>

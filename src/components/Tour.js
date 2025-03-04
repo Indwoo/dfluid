@@ -54,16 +54,16 @@ const YearFilterTrack = styled.div`
   height: 4px;
   background: linear-gradient(
     to right,
-    #000 ${({ progress }) => progress}%,
-    #aaa ${({ progress }) => progress}%
+    #000 ${({ $progress }) => $progress}%,
+    #aaa ${({ $progress }) => $progress}%
   );
   transform: translateY(-50%);
   z-index: 0;
 `;
 
 const FilterButton = styled.button`
-  background: ${({ active }) => (active ? "#000" : "transparent")};
-  color: ${({ active }) => (active ? "#fff" : "#000")};
+  background: ${({ $active }) => ($active ? "#000" : "transparent")};
+  color: ${({ $active }) => ($active ? "#fff" : "#000")};
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
@@ -73,7 +73,7 @@ const FilterButton = styled.button`
   transition: background 0.3s ease-in-out;
 
   &:hover {
-    background: ${({ active }) => (active ? "#000" : "#ddd")};
+    background: ${({ $active }) => ($active ? "#000" : "#ddd")};
   }
 `;
 
@@ -91,11 +91,11 @@ const YearFilterButton = styled.button`
   transition: background 0.3s ease-in-out;
   z-index: 1;
 
-  background: ${({ active }) => (active ? "#000" : "#aaa")};
+  background: ${({ $active }) => ($active ? "#000" : "#aaa")};
   color: #fff;
 
   &:hover {
-    background: ${({ active }) => (active ? "#000" : "#888")};
+    background: ${({ $active }) => ($active ? "#000" : "#888")};
   }
 `;
 
@@ -226,15 +226,15 @@ export default function Tour() {
       <FilterSection>
         <FilterContainer>
           {["All", "Asia", "Europe", "America", "Oceania"].map((category) => (
-            <FilterButton key={category} active={selectedCategory === category} onClick={() => setSelectedCategory(category)}>
+            <FilterButton key={category} $active={selectedCategory === category} onClick={() => setSelectedCategory(category)}>
               {category}
             </FilterButton>
           ))}
         </FilterContainer>
 
         <YearFilterContainer>
-          <YearFilterTrack progress={progress} />
-          {yearOptions.map((year) => (<YearFilterButton key={year} active={selectedYear >= year} onClick={() => setSelectedYear(year)}>
+          <YearFilterTrack $progress={progress} />
+          {yearOptions.map((year) => (<YearFilterButton key={year} $active={selectedYear >= year} onClick={() => setSelectedYear(year)}>
             {year}
           </YearFilterButton>
           ))}
